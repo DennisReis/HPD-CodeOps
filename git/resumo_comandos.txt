@@ -1,0 +1,141 @@
+FUNCIONALIDADES VIM:
+
+MOVIMENTAÇÃO:
+h  - cima;
+j  - baixo;
+k  - esquerda; 
+l  - direita;
+gg - move para a primeira linha;
+G  - move para a última linha;
+nG - posiciona o cursor para linha 'n';
+:n - move para linha 'n';
+ww - move o cursor de palavra em palavra;
+b  - volta uma palavre;
+{  - salta parágrafo;
+(  - salta parágrafo;
+`  - desfaz o último salto;
+
+
+INSERÇÃO: 
+I - habilita modo de inserção no início da linha
+i -  habilita mode de inserção na posição do cursor;
+x - apaga um carcter [fora do modo de inserção];
+o - nova linha com modo de inserção habilitado;
+O - adiciona linha acima habilitando inserção;
+a - habilita modo inserção uma posição após do cursor;
+A - habilita modo inserção no fim da linha
+
+COMANDOS:
+:                  - habilita modo comando;
+:q                 - quit. Sai do arquivo sem salvar;
+:wq                - write quit. Salva e sai do arquivo;
+:x                 - write quit;
+shift + z z        - write quit. "Zalva e Zai";
+:w <novo_nome>     - salvar como. durante execução arquivo;
+:r <outro_arquivo> - read. Pega conteúdo de <outro_arquivo> e insere no arquivo
+                    aberto na posição do cursor;
+:e <outro_arquivo> - edit. Abre <outro_arquivo> para edição;
+:split <arquivo>   - split horizontal. Para trocar entre as tela usar Ctlr+ww;
+:vsplit <arquivo>  - split vertical;
+
+COPIAR/COLAR:
+yy  - copia a linha desejada;
+p   - cola
+dd  - recorta a linha. Pode ser usado para deleção também;
+nyy - copia 'n' linhas;
+
+DESFAZER/REFAZER:
+u      - undo. Desfaz a última ação;
+Ctrl+r - redo. Refaz o último undo;
+
+DELEÇÃO:
+x       - deleta o caractere que está posicionado no cursor;
+nx      - deleta 'n' caracteres
+shift+d -deleta a partir do cursor até o fim da linha;
+dgg     - apagga do cursor até o início do arquivo;
+dG      - apaga do cursor até o fim do arquivo;
+
+SELEÇÃO DE LINHAS:
+v - habilita modo visual. Permite selecionar linhasno movimento do cursor.
+    Selecionadas as linhas, digitar'y' para colar a seleção;
+shift+v - Habilita visual line;
+Ctrl+v  - Habilita visual block;
+
+PESQUISA:
+f - find. Procura o caractere referenciado;
+/ - pesquisa palavra, navegue com 'n' ou 'N';
+
+SUBSTITUIÇÃO:
+:linha_inicial,linha_final s/'substituir'/'substituiçao' - realiza substituição
+                                                    no intervalo de linhas referenciado;
+:linha s/substituir/substituição   - substitui a primeira ocorrência;
+:linha s/substituir/substituição g - substitui todas ocorrências na linha;
+:%s /substituir/substituição       - substitui todo arquivo;
+
+COMANDOS SHELL:
+:!<comando_shell>  - mostra resultado do comando no shel. Retorna para o vim
+                    após <ENTER>;
+:r!<comando_shell> - joga no arquivo o resultado do comando na posição do
+cursor;
+
+
+
+COMANDOS GIT:
+git init : inicia um repositório git no diretório executado;
+git config : set das configurações do git.
+    Ex: git config --global user.email "nome@seuemail.com";
+        git congig --global user.name "seu nome"; 
+    Obs: essas são as configurações mínimas para se executar um commit;
+        git config --global core.editor "vim";
+git stauts: check do repo. Use sem moderação;
+git add: adiciona os arquivos para tracking;
+        -A: todas as alterações, Pode usar '.'
+git commit: efetiva as mudanças no repo;
+            -m: mensagem do commit;
+            --amend : permite alterar a mensagem do commit;
+    obs: o commit pode ser em um único arqivo. 
+        Ex : git commit -m "mensagem" <arquivo>;
+NOTA: para as mensagens do commit é interessante que:
+        . Estejam no presente;
+        . Evitar gerundio;
+        . Escritas em inglês (preferencialmente);
+git remote add origin "endereço_repo" - adiciona repo remoto;
+git push : atualiza no sentido local -> remoto;
+git pull : atualiza no sentido remoto -> local;
+git log : informações referente aos commits;
+         -p: log mais completo;
+         -p -n : log dos 'n' commits anteriores;
+         --stat : log resumo, estatísticas;
+         --oneline: traz somente hase e detalhe dos commits;
+git reset <arquivo> : retira arquivo da Stage e retorna para Untreakced;
+git reset HEAD : retira todos arquivos;
+git rm <arquivo> : remove arquivo do repo local;
+git checkout -b <branch> : cria um novo branch e já ativa-o;
+git branch : mostra todos os branches.
+git diff <branch> : mostra as diferencças entra e branch ativa contra <branch>;
+git merge <branch> : faz o merge entre a branch ativa com a <branch>;
+git branch -D <branch> : remove <branch> repo loca;
+git push origin :<branch> : remove <branch> repo remoto;
+git push origin --delete <branch> : mesma função do comando acima;
+git tag -a <tag> -m "mensagem" : cria tag de release;
+git tag -a <tag> -m "mensagem" xxxxxxx : tag do release xxxxxxx(hash commit);
+git show <tag. : mostra as alterações da versão;
+git push origin --tags : sobe para o repo remoto as tags geradas;
+git checkout <tag> : faz o HEAD apontar para <tag>;
+git tag -d <tag> : remove tag, repo loca;
+git push orogi :<tag> : remove tag, repo remoto;
+git checkout --<arquivo> : ignora as mudanças e volta pro status do último
+            commit;
+git checkout <tag/branch> --<arquivo>
+
+GIT FLOW:
+git flow init : inicia um fluxo;
+git flow feature start <feature>   : inicia uma nova feature;
+git flow feature publish <feature> : publica mudanças no repo remoto;
+git flow feature start <feature>   : finaliza a feature, faz o merge com devel e
+                                    apaga branch;
+git flow release start <release>   : inicia uma nova releasee;
+git flow realese publish <release> : publica mudanças no repo remoto;
+git flow release start <release>   : finaliza a feature, faz o merge com master,
+                                    gera tag e apaga branch develop;
+
