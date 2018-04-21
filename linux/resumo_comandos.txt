@@ -1,0 +1,209 @@
+ESTRUTRA DE DIRETŔOIOS SOLICITADA EM AULA
+
+total 16K
+drwxrwxr-x  4 dennis dennis 4,0K Abr 19 18:01 .
+drwxr-xr-x 36 dennis dennis 4,0K Abr 20 20:41 ..
+drwxrwxr-x  7 dennis dennis 4,0K Abr 19 18:01 .git
+drwxrwxr-x 16 dennis dennis 4,0K Abr 19 18:10 HPD-CodeOps
+total 68K
+drwxrwxr-x 16 dennis dennis 4,0K Abr 19 18:10 .
+drwxrwxr-x  4 dennis dennis 4,0K Abr 19 18:01 ..
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 ansible
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 beat
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 chef
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 docker
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 git
+drwxrwxr-x  8 dennis dennis 4,0K Abr 20 20:45 .git
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 gitlab
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 graylog
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 jenkins
+drwxrwxr-x  2 dennis dennis 4,0K Abr 20 20:46 linux
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 markdown
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 prometheus
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 python
+-rw-rw-r--  1 dennis dennis   64 Abr 19 18:01 README.md
+drwxrwxr-x  2 dennis dennis 4,0K Abr 19 18:02 ruby
+
+
+COMANDOS ÚTEIS:
+
+cd - : volta para o último diretório em que estava;
+cd .. : sobe um nível na árvore de diretórios;
+ls -lha : listagem completa do dirtetório, 'h' - human readable, converte B ->
+    KB -> MB -> GB;
+ls -lhad : limita a listagem somente ao diretório, não exibe infos do conteúdo;
+. : diretório corrente;
+.. : referência ao diretório acima;
+history : lista os último comandos executados, por padrão são os últimos 500
+    comando, porém esse número pode ser alterado;
+!n : executa o comanado de número 'n' do histórico;
+!<part_comando> : executa o último comando executado, somente digitando parte do
+    mesmo. Ex: !ls >>> ls -lha;
+ctrl + r : executa busca reversa no history;
+history -c : limpa o histórico dde comando da sessão;
+ldd : lista as bibliotecas compartilhadas de um programa.
+    Ex: ldd /bin/ls;
+df -h : mostra todas as partições dos discos;
+mount : mostra tudo o que está montado. Ex: CD-ROM, pendrive etc;
+dmesg : mostra as informações do boot e dinâmicas do kernel;
+ps -ef: mostra todos os processos em execução;
+tail -f <arquivo> : mostra as 10 últimas linhas do arquivo e deixa a listagem
+    dinâmica;
+touch <arquivo> : cria <arquivo>;
+cat <arquivo> : exibe conteúdo de <arquivo>;
+id : mostra os ids root, grupo;
+    Ex: uid=0(indica que é o root) gid=x
+chmod -R 755 : recursivo, altera todos os diretórios/arquivo dentro do diretório
+    que está executando o comando
+adduser <usuario> : cria um usuário. Modo completo
+                    -> senha
+                    -> grupo
+                    -> /etc/skel
+useradd <usuario> : criação simplificada, necessita execuçaõ do comando passwd
+                 posteriormente. Não cria diretório home;
+deluser <usuario> : remove usuário;
+userdel <usuario> : remove usuário, porém precisa do parâmetro -r para apagar o
+                /home e spoool de e-mail;
+usermod -u 1010 -g 1002 <user> : altera o usuário
+        -G : adiciona grupo
+        -d : altera o diretório home
+        -s : altera o shell padrão 
+addgroup <grupo> : adiciona um grupo
+delgroup <grupo> : remove grupo
+gpasswd --help
+passwd : altera/adiciona senha para um usuário
+
+DIRETÓRIOS BASE:
+/bin: diretório de binários de uso universal;
+/boot: diretóro com os aquivos de boot do Sistema Operacional
+    (vmlinuz => kernel do Linux);
+/dev: diretório com todos dispositivos(devices)
+    -> dispositivo tipo caracter ('c'): envia info
+    -> dispositivo tipo bloco ('b'): armazena info
+    -> psaux: arquivo q captura movimento do mouse;
+/etc: diretório onde se guarda informações de configuração;
+/home: diretório onde ficam todos os diretórios home de cada usuário;
+/lib: diretório das bibliotecas do Linux
+    -> <arquivo>.so => refere-se as bibliotecas
+    -> <arquivo>.ko => refere-se aos módulos do kernel
+/lib/modules/4.13.0-38.generic/kernel/drivers : diretório com os dirvers/modulos
+    do kernel;
+/lost+found: diretório com os arquivos corrompidos;
+/media: diretório onde são montados mídias removíveis(Disco, CD-ROM, ect);
+/mnt: diretório para montar dispositivos externos(HD Externo, FileSystem Remoto)
+/opt: diretório onde ficam as aplicações que não fazem parte da distribuição.
+/proc: diretório lógico. Contém informações dinâmicas do kernel. Processos em
+    execução, "existe mas não existe";
+/proc: cat meminfo => info do uso de memória
+       cat cpuinfo => info do uso de CPU;
+/root: diretório default do usuário root;
+/run: diretório com informações do sistema. Histórco desde o último boot
+      anteriormente era usado no /var/run;
+/sbin: diretório com os binários exlcusivos do usuário root;
+/srv: diretório que contém dados fornecidos por algum serviço. Ex: Apache
+      obs: relativamente novo na LSB (Linux System Base);
+/sys: informações dinâmicas referente ao kernel;
+/tmp: dados temporários, apagado a cada reboot;
+/usr: segundo nível de diretório após o '/'. Contém os programas e apps
+    instalados após o sistema base;
+/var: dados variáveis, logs e afins;
+/etc/skel: diretório modelo para criação de um novo usuaŕio
+/etc/passwd : mostra as informações de todos os usuários.
+            não é recomendado alterar esse arquivo, usar usermod.
+/etc/shadows: contém as senhas dos usuários, somente o hash;
+            * - não tem senha
+            ! - senha bloqueada
+/var/cache/apt/archives: diretório contendos os pacotes que foram desinstalados.
+                        Usar "apt clean" para limpar o diretório; (Debian) 
+/var/cache/yums: diretório contendos os pacotes que foram desinstalados.
+                        Usar "yum clean all" para limpar o diretório; (RedHatn) 
+
+TIPOS DE ARQUIVO:
+- : arquivo comum;
+l : link simbólico;
+s : socket;
+b : dispositivo de bloco;
+c : dispositivo de caractere;
+d : diretório;
+
+PERMISSIONAMENTO
+
+    dono[u]    grupo[g]     outros[o]
+     rwx         rwx          rwx
+      
+
+simbólico  | octal  |   especial  
+r = read   |   4    | sitckybit = 1
+w = write  |   2    | SGID      = 2
+x = execute|   1    | SUID      = 4
+
+
+Ex: 
+-rw-   rw-     r-- 1 dennis dennis 62 Abr 19 21:48 resumo_comando
+4+2+0 4+2+0  4+0+0
+  6     6      4
+
+chmod = muda permissão arquivo ou diretório
+chown = muda o dono ou grupo dono
+chgrp = muda grupo dono
+
+OBS: Diretóris devem sempre ter permissão de execução, caso essa permissão seja
+retirada o acesso ao diretório será negado.
+
+PERMISSÃO ESPECIAL:
+chmod 1755 <target> : liga o stickybit. Permite acesso full com exceção de
+                    remoção;
+                    Funciona somente em diretório;
+chmod 4777 /sbin/reboot : habilita o SUID, permite qualquer um executar como se
+                        fosse o dono do arquivo;
+chmod 2777 /sbin/reboot : habilita o SGID, similar ao SUID porém executa como se
+                        pertencesse ao grupo dono;
+
+
+ISNTALANDO PACOTES:
+
+DEBIAN: sudo apt(-get) install <pacote>;
+REDHAT: yum install <pacote>;
+obs: -f, executa tentativa de resolver algum dependência quebrada.
+
+Tanto aptquanto yum instalam os pacotes resolvendo suas dependências.
+
+cat /etc/issue : mostra a versão do SO instalado;
+
+BUSCAR PACOTES:
+DEBIAN: apt-cache search <pacote>;
+REDHAT: yum search <pacote>;
+
+NOTA: TOda vez que o arquivo de repos [sourcelist em Debian like] é necessário
+executar "apt update"(Somente para distros Debian like).
+
+
+LISTANDO PACOTES INSTALADOS:
+DEBIAN: dpkg -l <pacote>;
+REDHAT: rpm -qa <pacote>;
+
+NOTA: Caso não informe <pacote>, o comando listará todos os pacotes instalados.
+
+REMOVENDO PACOTES:
+DEBIAN: [sudo] apt(-get) remove --purge <pacote>
+    se não utilizarmos o parâmetro "--purge" o pacote será removido, porém
+    somente o binário. As demais informações (documentos, diretórios, etc)
+    permanecerão.
+REDHAT: yum remove <pacote>;
+
+
+ATUALIZANDO PACOTES:
+DEBIAN: sudo apt upgrade
+        sudo apt dist-upgrade (resolve dependências)
+REDHAT: yum update
+
+INFORMAÇÕES DO PACOTE:
+DEBIAN:
+    apt-cache show <pacote> : traz informaçoes do pacote;
+    apt-cache showpkg <pacote> : traz dependências do pacote;
+
+REDHAT:
+    yum info <pacote>;
+    yum grouplist : lista grupos de pacotes suportados;
+    yum groupinfo <grupo> : informação do grupo;
+    yum groupinstall <grupo> : instala grupo;
