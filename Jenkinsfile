@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'echo "iniciando o build"'
-        sh 'ls -l'
+        sh 'docker build -t dmpr.lab .'
       }
     }
     stage('Tests') {
@@ -12,7 +12,7 @@ pipeline {
         sh 'pwd'
       }
     }
-    stage('Aporvação') {
+    stage('Aprovação') {
       steps {
         input 'Aprova o Deploy?'
       }
