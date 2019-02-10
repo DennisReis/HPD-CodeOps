@@ -1,0 +1,8 @@
+print('Giropops Strigus Girus')
+print('Qual eh o seu nome?')
+nome = input()
+print('Prazer em te conhecer, ' + nome)
+print('O tamanho do seu nome eh: ' + str(len(nome)))
+print('Qual eh a sua idade, ' + nome + ' ?')
+idade = input()
+print('Voce fara ' + str(int(idade) + 1) + ' em um ano')
